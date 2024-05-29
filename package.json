@@ -4,7 +4,8 @@
 	"description": "Trang tin điện tử Node JS + MongoDB",
 	"main": "index.js",
 	"scripts": {
-		"test": "nodemon index.js"
+		"test": "nodemon index.js",
+		"start": "node index.js"
 	},
 	"author": "FIT - AGU",
 	"license": "ISC",
