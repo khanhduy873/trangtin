@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>
+		<%= title %>
+	</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+	<%- include('includes/navbar') %>
+		<div class="container">
+			<div class="nav-scroller py-1 dieu_huong">
+				<nav class="nav d-flex justify-content-between">
+					<h2 class="text-start">
+						Tìm kiếm từ khóa: <%= tukhoa %>
+					</h2>
+				</nav>
+			</div>
+
+			<h6 class="heading_newsbook">
+				<%= baiviet && baiviet.length> 0 ? (`${baiviet.length} kết quả` ) : '' %>
+					</h1>
+					<div class="row book_luotxem">
+						<% if(baiviet && baiviet.length> 0){ %>
+							<% baiviet.forEach(function(lt){ %>
+								<div class="col-md-6">
+									<div
+										class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+										<div class="col p-3 d-flex flex-column position-static">
+											<strong class="d-inline-block mb-2 text-primary">
+												<%= lt.ChuDe.TenChuDe %>
+											</strong>
+											<h4 class="mb-0 detail-content-item-heading">
+												<%= lt.TieuDe %>
+											</h4>
+											<div
+												class="container--information-text container--information-tacgia ngaydang_font my-3">
+												<p>
+													<%= new Date(lt.NgayDang.toISOString()).toLocaleString("vi-VN") %>
+												</p>
+												<p>Lượt xem: <%= lt.LuotXem %>
+												</p>
+											</div>
+											<p class="card-text my-2 detail-content-item-text">
+												<%= lt.TomTat %>
+											</p>
+											<a href="/baiviet/chitiet/<%= lt._id %>"
+												class="stretched-link text-decoration-none">Xem
+												thêm...</a>
+										</div>
+										<div class="col-auto d-none d-lg-block">
+											<img src="<%- firstImage(lt.NoiDung) %>" class="card-img-right" width="200">
+										</div>
+									</div>
+								</div>
+								<% }); %>
+									<% }; %>
+					</div>
+
+					<!-- <% if(baiviet.length) { %>
+				<% baiviet.forEach(function(baiviet) { %>
+					<div class="bv_chitiet-box">
+						<h5 class="card-header bv_chitiet-heading">
+							<%= baiviet.TieuDe %>
+						</h5>
+						<div class="container--information-text container--information-tacgia ngaydang_font my-3">
+							<% if(baiviet.NgayDang && baiviet.TaiKhoan && baiviet.TaiKhoan.HoVaTen) { %>
+								<p class="card-text small text-muted bv_chitiet-ngay">
+									Ngày đăng <%= new Date(baiviet.NgayDang.toISOString()).toLocaleString("vi-VN") %>,
+										bởi <%= baiviet.TaiKhoan.HoVaTen %>,
+											có <%= baiviet.LuotXem %> lượt xem.
+								</p>
+								<% } %>
+						</div>
+						<div class="card-body bv_chitiet-inf">
+							<p class="card-text bv_chitiet-tomtat">
+								<%= baiviet.TomTat %>
+							</p>
+							<p class="card-text bv_chitiet-noidung"><%- baiviet.NoiDung %></p>
+						</div>
+					</div>
+					<% }); %>
+						<% } else { %>
+							<p>Không tìm thấy kết quả phù hợp.</p>
+							<% } %> -->
+
+					<!-- move_up -->
+					<!-- <div class="move_up">
+									<a href="#" class="layout__sticky">
+										<i class="fa-solid fa-arrow-up"></i>
+									</a>
+								</div> -->
+		</div>
+
+</body>
+<%- include('includes/footer') %>
+	<%- include('includes/javascript') %>
+
+</html>

@@ -1,0 +1,68 @@
+<script>// Lấy đường dẫn URL hiện tại
+	var currentPath = window.location.pathname;
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+	(() => {
+		'use strict';
+		const forms = document.querySelectorAll('.needs-validation');
+		Array.from(forms).forEach(form => {
+			form.addEventListener('submit', event => {
+				if (!form.checkValidity()) {
+					event.preventDefault();
+					event.stopPropagation();
+				}
+				form.classList.add('was-validated');
+			}, false);
+		});
+	})();
+</script>
+
+<!-- kiểm tra mật khẩu -->
+<script>
+	document.addEventListener('DOMContentLoaded', function () {
+		const form = document.getElementById('registrationForm');
+		const password = document.getElementById('MatKhau');
+		const confirmPassword = document.getElementById('XacNhanMatKhau');
+		const errorMessage = document.getElementById('error-message');
+
+		form.addEventListener('submit', function (event) {
+			// Kiểm tra mật khẩu và xác nhận mật khẩu
+			if (password.value !== confirmPassword.value) {
+				event.preventDefault(); // Ngăn chặn việc gửi biểu mẫu
+				errorMessage.style.display = 'block'; // Hiển thị thông báo lỗi
+			} else {
+				errorMessage.style.display = 'none'; // Ẩn thông báo lỗi nếu khớp
+			}
+		});
+	});
+</script>
+
+
+<!-- Initialize Swiper -->
+<script>
+	const progressCircle = document.querySelector(".autoplay-progress svg");
+	const progressContent = document.querySelector(".autoplay-progress span");
+	var swiper = new Swiper(".mySwiper", {
+		spaceBetween: 30,
+		centeredSlides: true,
+		autoplay: {
+			delay: 2500,
+			disableOnInteraction: false
+		},
+		pagination: {
+			el: ".swiper-pagination",
+			clickable: true
+		},
+		navigation: {
+			nextEl: ".swiper-button-next",
+			prevEl: ".swiper-button-prev"
+		},
+		on: {
+			autoplayTimeLeft(s, time, progress) {
+				progressCircle.style.setProperty("--progress", 1 - progress);
+				progressContent.textContent = `${Math.ceil(time / 1000)}s`;
+			}
+		}
+	});
+</script>

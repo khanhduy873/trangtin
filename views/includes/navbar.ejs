@@ -1,0 +1,120 @@
+<div class="header__nav">
+	<div class="container">
+		<nav class="navbar-expand-lg bg-info header">
+			<div class="header__navbar">
+				<ul class="header__navbar--list-left">
+					<li class="header__navbar--list-item">
+						<span class="header__navbar-span">Theo dõi trên:</span>
+						<div class="header__navbar-img">
+							<a title="Theo dõi chúng tôi trên Facebook!" href="#" class="header__navbar-icon-link">
+								<img src="https://thanhnien-static.mediacdn.vn/thanhnien.vn/image/icon_facebook_full_color.svg"
+									alt=" Facebook">
+							</a>
+							<a title="Theo dõi chúng tôi trên Youtube!" href="https://www.youtube.com/@NguoiQuanSat-VN"
+								class="header__navbar-icon-link">
+								<img src="https://thanhnien-static.mediacdn.vn/thanhnien.vn/image/icon_youtube_fill.svg"
+									alt=" Youtube">
+							</a>
+							<a title="Theo dõi chúng tôi trên Tiktok!"
+								href="https://www.tiktok.com/@nqs.kinhte?is_from_webapp=1&sender_device=pc"
+								class="header__navbar-icon-link">
+								<img src="https://thanhnien-static.mediacdn.vn/thanhnien.vn/image/Icon_Tiktok_fill.svg"
+									alt=" Tiktok">
+							</a>
+						</div>
+					</li>
+				</ul>
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item tin_moi_nhat">
+						<a class="nav-link active" href="/tinmoinhat"><i class="bi bi-compass"></i> Tin Tức Tổng Hợp</a>
+					</li>
+				</ul>
+				<ul class="header__navbar--list-right">
+					<% if(typeof session==="undefined" || !session.MaNguoiDung) { %>
+						<li class="nav-item">
+							<a class="nav-link dropdown-toggle" href="/dangnhap"><i
+									class="bi bi-box-arrow-in-right"></i> Đăng nhập</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link dropdown-toggle" href="/dangky"><i class="bi bi-person-plus-fill"></i>
+								Đăng ký</a>
+						</li>
+						<% } else { %>
+							<% if(session.QuyenHan=="admin" ) { %>
+								<li class="nav-item dropdown">
+									<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+										aria-expanded="false">
+										<i class="bi bi-gear"></i> Quản lý
+									</a>
+									<ul class="dropdown-menu">
+										<li><a class="dropdown-item" href="/chude"><i class="bi bi-card-checklist"></i>
+												Chủ đề</a></li>
+										<li><a class="dropdown-item" href="/taikhoan"><i class="bi bi-people"></i> Tài
+												khoản</a></li>
+										<li>
+											<hr class="dropdown-divider">
+										</li>
+										<li><a class="dropdown-item" href="/baiviet"><i
+													class="bi bi-file-earmark-richtext"></i> Bài viết</a></li>
+									</ul>
+								</li>
+								<% } %>
+
+									<li class="nav-item dropdown">
+										<a class="nav-link dropdown-toggle" href="#" role="button"
+											data-bs-toggle="dropdown" aria-expanded="false">
+											<i class="bi bi-person"></i>
+											<%= session.HoVaTen %>
+										</a>
+										<% if(session.QuyenHan=="admin" || session.QuyenHan=="user" ) { %>
+											<ul class="dropdown-menu">
+												<li><a class="dropdown-item" href="/baiviet/them"><i
+															class="bi bi-file-earmark-plus"></i> Đăng bài viết</a></li>
+												<li><a class="dropdown-item" href="/baiviet/cuatoi"><i
+															class="bi bi-journal-bookmark"></i> Bài viết của tôi</a>
+												</li>
+												<li>
+													<hr class="dropdown-divider">
+												</li>
+												<li><a class="dropdown-item"
+														href="/taikhoan/hoso/<%= session.MaNguoiDung %>"><i
+															class="bi bi-person-badge"></i> Hồ sơ cá nhân</a></li>
+											</ul>
+											<% } %>
+									</li>
+
+									<li class="nav-item">
+										<a class="nav-link dropdown-toggle" href="/dangxuat"><i
+												class="bi bi-box-arrow-right"></i> Đăng xuất</a>
+									</li>
+									<% } %>
+				</ul>
+			</div>
+			<div class="container-fluid">
+				<a class="navbar-brand" href="/">
+					<img src="http://localhost:3000/images/pic.png" alt="Logo" width="30" height="30"
+						class="d-inline-block align-text-top" />
+				</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+					data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+					aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<form action="/timkiem" method="post" class="d-flex" role="search">
+						<input class="form-control me-2" type="search" name="tukhoa" placeholder="Bạn muốn tìm gì?" />
+						<button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
+					</form>
+				</div>
+			</div>
+			<font face="Times New Roman" size="5" color="#4083a4">
+				<marquee onmouseover="this.stop();" onmouseout="this.start();" behavior="scroll" direction="left"
+					scrollamount=3>
+					Chào mừng bạn đến với Trang Tin Tức!
+					Chúng tôi hân hạnh chào đón bạn đến với trang thông tin tổng hợp, nơi cung cấp những tin tức mới
+					nhất và đáng chú ý.
+				</marquee>
+			</font>
+		</nav>
+	</div>
+</div>
